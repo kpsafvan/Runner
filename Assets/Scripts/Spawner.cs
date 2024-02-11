@@ -19,16 +19,42 @@ public class Spawner : MonoBehaviour
     void Update()
     {
         time+=Time.deltaTime;
-        if(time>2){
-            x=Random.Range(0,2);
-            time=0;
-            if(x==0){
-            Instantiate(Obstacle_1, new Vector3(0f,20f,-10),  Quaternion.Euler(0, 0, 90));
+        if(time>1){ 
+            time=0; 
+            int spawnPoint = Random.Range(0, 8);
+            time = 0; 
+            float spawnX = 0f;
+            float spawnZ = -10f; 
+            switch (spawnPoint)
+            {
+                case 0:
+                    spawnX = -5f;
+                    break;
+                case 1:
+                    spawnX = 0f;
+                    break;
+                case 2:
+                    spawnX = 5f;
+                    break;
+                case 3:
+                    spawnZ = -5f;
+                    break;
+                case 4:
+                    spawnZ = 0f;
+                    break;
+                case 5:
+                    spawnZ = 5f;
+                    break;
+                case 6:
+                    spawnX = -5f;
+                    spawnZ = -5f;
+                    break;
+                case 7:
+                    spawnX = 5f;
+                    spawnZ = -5f;
+                    break;
             }
-            else{
-            Instantiate(Obstacle_2, new Vector3(0f,20f,-10),  Quaternion.Euler(0, 0, 90));
-            }
-
+            Instantiate(Obstacle_1, new Vector3(spawnX,1f,spawnZ),  Quaternion.Euler(0, 0, 0)); 
         }
     }
 }
